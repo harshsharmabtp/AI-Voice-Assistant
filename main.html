@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Voice Assistant</title>
+        <link rel="stylesheet" href="styles.css">
+        
+        <!-- <link rel="stylesheet" href="clock.css"> -->
+    </head>
+    <body>
+
+
+        
+
+      <div class="voice-animation">
+        <div class="bar"></div>
+        <div class="bar"></div>
+        <div class="bar"></div>
+        <div class="bar"></div>
+        <div class="bar"></div>
+    </div>
+       <div class="btn">
+            <button id="start">..Activate..</button>
+            <br><br><br><br>
+            <button id="stop">Deactivate</button> 
+            <br><br><br><br>
+            <button><a href="command.html"
+              style = 
+              
+              "color: rgb(5, 202, 5);
+              text-decoration:none;"
+            
+              
+              >Commands</a></button>
+           
+             
+            <!-- <button><a href=""></a></button> -->
+            
+        </div> 
+
+       <div id="text1"></div> 
+        <div id="text2"></div> 
+        <div id="text3"></div>  
+
+        
+        
+
+         <div class="head">
+        <h3>Voice Assistant</h3>
+       </div> 
+
+
+
+       <div id="clock">
+        <div id="time"></div>
+        <div id="date"></div>
+        <div id="week"></div>
+    </div> 
+
+
+
+
+
+     <div class="pic">
+        <img src="my.jpg" alt="">
+    </div> 
+
+
+
+
+   
+
+
+
+
+
+
+
+
+
+
+
+
+    <script>
+        let p1 = new Promise((resolve,reject)=>{
+            setTimeout(()=>{
+              resolve("...Initializing Commands...")
+            },3000)
+          })
+          p1.then((values)=>{
+            console.log(values)
+            document.getElementById("text1").innerHTML=values
+          })
+          let p2 = new Promise((resolve,reject)=>{
+            setTimeout(()=>{
+              resolve("...Build Completed Successfully...")
+            },7000)
+          })
+          p2.then((values)=>{
+            console.log(values)
+            document.getElementById("text2").innerHTML=values
+          })
+          let p3 = new Promise((resolve,reject)=>{
+            setTimeout(()=>{
+              resolve("...Ready for Execution...")
+            },8000)
+          })
+          p3.then((values)=>{
+            console.log(values)
+            document.getElementById("text3").innerHTML=values
+          })
+
+
+
+
+
+
+          function updateClock() {
+            const now = new Date();
+            
+            // Time
+            let hours = now.getHours();
+            let minutes = now.getMinutes();
+            let seconds = now.getSeconds();
+            
+            // Format time as HH:MM:SS
+            hours = hours < 10 ? '0' + hours : hours;
+            minutes = minutes < 10 ? '0' + minutes : minutes;
+            seconds = seconds < 10 ? '0' + seconds : seconds;
+            
+            const timeString = `${hours}:${minutes}:${seconds}`;
+            
+            // Date
+            const day = now.getDate();
+            const month = now.getMonth() + 1; // Months are 0-based
+            const year = now.getFullYear();
+            const dateString = `${day < 10 ? '0' + day : day}/${month < 10 ? '0' + month : month}/${year}`;
+            
+            // Weekday
+            const weekdays = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
+            const weekString = weekdays[now.getDay()]; // Get day of the week (0-6)
+            
+            // Update the DOM
+            document.getElementById('time').textContent = timeString;
+            document.getElementById('date').textContent = dateString;
+            document.getElementById('week').textContent = weekString;
+          }
+          
+          // Update the clock every second
+          setInterval(updateClock, 1000);
+          
+          // Initialize clock
+          updateClock();
+          
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+    </script>
+
+
+
+
+
+
+
+
+
+
+        <script src="script.js"></script>
+    </body>
+</html>
